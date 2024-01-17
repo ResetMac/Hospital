@@ -1,3 +1,3 @@
 select employee.employee_id, employee.full_name, servicepersonnel.profile
 from employee join servicepersonnel on servicepersonnel.employee_id=employee.employee_id
-where servicepersonnel.profile='Хирург'
+where servicepersonnel.profile='Хирург' and employee.work_exp > 2
