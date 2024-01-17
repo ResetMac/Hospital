@@ -1,0 +1,214 @@
+<?php
+session_start();
+/*if (!$_SESSION['user']) {
+    header('Location: /');
+}*/
+?>
+
+<!--<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация и регистрация</title>
+    <link rel="stylesheet" href="mains.css">
+</head>
+<body>
+
+    
+
+    <form>
+        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="">
+        <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
+        <a href="#"><?= $_SESSION['user']['email'] ?></a>
+        <a href="vendor/logout.php" class="logout">Выход</a>
+    </form>
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+<body>
+  <section class="hero is-fullheight is-bordered">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                    <img src="./content/pngwing.com.png" alt="Logo">
+                </a>
+                <a class="navbar-item">
+                    <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
+                </a>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                <a href="profile.php" class="navbar-item">
+                    Главная
+                </a>
+                <a href="bd.php" class="navbar-item">
+                    Врачи
+                </a>
+                <a href="obs_pers.php" class="navbar-item">
+                    Обслуживающий персонал
+                </a>
+                <a href="stacLech.php" class="navbar-item">
+                    Стац. лечение
+                </a>
+                <a href="zagruzka.php" class="navbar-item">
+                    Загрузка
+                </a>
+                <a href="virabotka.php" class="navbar-item">
+                    Выработка
+                </a>
+                <a href="operacii.php" class="navbar-item">
+                    Операции
+                </a>
+                <a href="pacienti.php" class="navbar-item">
+                    Пациенты
+                </a>
+                <span class="navbar-item">
+                <a href="bolnici.php" class="button has-background-link has-text-white-ter is-inverted">
+                  <span>Больницы</span>
+                </a>
+                </span>
+                <span class="navbar-item">
+                
+                    <a href="vendor/logout.php" class="logout button has-background-link has-text-white-ter is-inverted">
+                    <span>Выход</span>
+                    </a>
+                </span>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-body header-image">
+      <div class="my-cardglav card mx-auto">
+        <div class="card-head">
+          <p class="is-size-4 has-text-centered py-3 pt-6">
+            Больницы
+          </p>
+        </div>
+        <div class="card-content px-6">
+        
+        <a href="Sova.php" class="logout button has-background-link has-text-white-ter is-inverted">
+            <span>Сова</span>
+        </a>
+
+        <a href="panaceya.php" class="logout button has-background-link has-text-white-ter is-inverted">
+            <span>Панацея</span>
+        </a>
+
+        <a href="Professional.php" class="logout button has-background-link has-text-white-ter is-inverted">
+            <span>Professional</span>
+        </a>
+
+        <a href="Poli.php" class="logout button has-background-link has-text-white-ter is-inverted">
+            <span>Поликлиника №2</span>
+        </a>
+          <!--<p>
+            1. Получить перечень врачей указанного профиля для всех медицинских учреждений города.
+            <button type="submit" id='getData1' onclick="GetData12('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">Хирург</button>
+            <button type="submit" id='getData1' onclick="GetData12('Стоматолог')" class="button is-centered my-button has-background-link has-text-white-ter ">Стоматолог</button>
+            <button type="submit" id='getData1' onclick="GetData12('Рентгенолог')" class="button is-centered my-button has-background-link has-text-white-ter ">Рентгенолог</button>
+            <button type="submit" id='getData1' onclick="GetData12('Гинеколог')" class="button is-centered my-button has-background-link has-text-white-ter ">Гинеколог</button>
+            <button type="submit" id='getData1' onclick="GetData12('Мед. сестра')" class="button is-centered my-button has-background-link has-text-white-ter ">Мед. сестра</button>
+          </p>
+          <p>
+            2. Получить перечень обслуживающего персонала указанной специальности для всех медицинских учреждений города.
+            <button type="submit" id='getData2' onclick="GetData12('Охранник')" class="button is-centered my-button has-background-link has-text-white-ter ">Охранник</button>
+            <button type="submit" id='getData2' onclick="GetData12('Уборщица')" class="button is-centered my-button has-background-link has-text-white-ter ">Уборщица</button>
+            <button type="submit" id='getData2' onclick="GetData12('Санитар')" class="button is-centered my-button has-background-link has-text-white-ter ">Санитар</button>
+          </p>
+          <p>
+          3. Получить перечень хирургов, сделавших число операций не менее 
+          <button type="submit" id='getData3' onclick="GetData3('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">3</button> 
+          для всех медицинских учреждений города.
+            
+          </p>  
+          <p>
+          4.	Получить перечень хирургов, стаж работы которых не менее заданного для всех медицинских учреждений города.
+          </p>
+            <button type="submit" id='getData4' onclick="GetData3('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">Хирурги3</button>
+            <button type="submit" id='getData5' onclick="GetData3('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">Хирурги2</button>
+            <button type="submit" id='getData6' onclick="GetData3('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">Хирурги2</button>
+            <button type="submit" id='getData7' onclick="GetData3('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">Хирурги2</button>
+            <button type="submit" id='getData8' onclick="GetData3('Хирург')" class="button is-centered my-button has-background-link has-text-white-ter ">Хирурги2</button>
+            
+            
+          
+          </p>-->
+          <div id="tab">
+            <!--<script>
+              function GetData12(param) {
+    const uri = '/vendor/requests12.php';
+  const initDetails = {
+      method: 'get',
+      headers: {
+          "Content-Type": "application/json; charset=utf-8"
+      },
+      mode: "cors"
+  }
+      console.log(param);
+      let myuri = uri + '?param=' + param;
+      console.log(myuri);
+      fetch( myuri, initDetails )
+          .then( response =>
+          {
+              if ( response.status !== 200 )
+              {
+                  console.log( 'Looks like there was a problem. Status Code: ' +
+                      response.status );
+                  return;
+              }
+
+              console.log( response.headers.get( "Content-Type" ) );
+              return response.json();
+          }
+          )
+          .then( myJson =>
+          {
+              document.getElementById("tab").innerHTML = "";
+              //console.log( JSON.stringify( myJson ) );
+              let data = JSON.parse(JSON.stringify( myJson ));
+              console.log(data);
+              var table = document.createElement("table"), row, cellA, cellB;
+              document.getElementById("tab").appendChild(table);
+              row = table.insertRow();
+                cellA = row.insertCell();
+                cellB = row.insertCell();
+                cellA.innerHTML = "full_name";
+                cellB.innerHTML = "profile";
+              for (let key in data) {
+                // (C2) ROWS & CELLS
+                row = table.insertRow();
+                cellA = row.insertCell();
+                cellB = row.insertCell();
+                
+                cellA.innerHTML = data[key]["full_name"];
+                cellB.innerHTML = data[key]["profile"];
+              }
+
+          } )
+          .catch( err =>
+          {
+              console.log( 'Fetch Error :-S', err );
+          } );
+  }
+              </script>-->
+          </div>
+        </div>
+    </div>
+  </nav>
+</div>
+  </section>
+  <script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>

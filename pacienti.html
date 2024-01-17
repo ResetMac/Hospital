@@ -1,0 +1,118 @@
+<?php
+session_start();
+/*if (!$_SESSION['user']) {
+    header('Location: /');
+}*/
+?>
+
+<!--<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация и регистрация</title>
+    <link rel="stylesheet" href="mains.css">
+</head>
+<body>
+
+    
+
+    <form>
+        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="">
+        <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
+        <a href="#"><?= $_SESSION['user']['email'] ?></a>
+        <a href="vendor/logout.php" class="logout">Выход</a>
+    </form>
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+<body>
+  <section class="hero is-fullheight is-bordered">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                    <img src="./content/pngwing.com.png" alt="Logo">
+                </a>
+                <a class="navbar-item">
+                    <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
+                </a>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                <a href="profile.php" class="navbar-item">
+                    Главная
+                </a>
+                <a href="bd.php" class="navbar-item">
+                    Врачи
+                </a>
+                <a href="obs_pers.php" class="navbar-item">
+                    Обслуживающий персонал
+                </a>
+                <a href="stacLech.php" class="navbar-item">
+                    Стац. лечение
+                </a>
+                <a href="zagruzka.php" class="navbar-item">
+                    Загрузка
+                </a>
+                <a href="virabotka.php" class="navbar-item">
+                    Выработка
+                </a>
+                <a href="operacii.php" class="navbar-item">
+                    Операции
+                </a>
+                <a href="pacienti.php" class="navbar-item">
+                    Пациенты
+                </a>
+                <span class="navbar-item">
+                <a href="bolnici.php" class="button has-background-link has-text-white-ter is-inverted">
+                  <span>Больницы</span>
+                </a>
+                </span>
+                <span class="navbar-item">
+                  
+                    <a href="vendor/logout.php" class="logout button has-background-link has-text-white-ter is-inverted">
+                    <span>Выход</span>
+                    </a>
+                </span>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-body header-image">
+      <div class="my-cardglav card mx-auto">
+        <div class="card-head">
+          <p class="is-size-4 has-text-centered py-3 pt-6">
+            Пациенты всех мед. учреждений
+          </p>
+        </div>
+        <div class="card-content px-6">
+            <div class="select">
+                <select id="select" onchange="GetData3(value)">
+                    <option  >Получить перечень... </option>
+                    <option value="ФИО пациента" >Получить перечень пациентов </option>
+                </select>
+            </div>
+         
+          </p>
+          <div id="tab" class="table is-bordered mx-auto px-6 is-striped is-centered px-6 py-6 is-narrow is-hoverable is-fullwidth">
+            
+          </div>
+        </div>
+    </div>
+  </nav>
+</div>
+  </section>
+  <script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>
